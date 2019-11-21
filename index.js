@@ -8,22 +8,73 @@ const Manager = require("./lib/Manager")
 const Engineer = require("./lib/Engineer")
 const Intern = require("./lib/Intern")
 const writeFileAsync = util.promisify(fs.writeFile);
-
-// async function promptUser() {
-//     return inquirer.prompt([
-//       {
-//         type: "list",
-//         name: "color",
-//         message: "What is your favorite color?",
-//         choices: ["red","orange","yellow","green","blue","purple"]
-//       },
-//       {
-//         type: "input",
-//         name: "github",
-//         message: "Enter your GitHub Username"
-//       }
-//     ]);
-//   }
+const employeeArray = [];
+async function addEmployee() {
+    return inquirer.prompt(
+        {
+            type: "list",
+            name: "add",
+            message: "Would you like to add an Employee?",
+            choices: ["Yes","No"]
+        }
+    );
+}
+async function addAnother() {
+    return inquirer.prompt(
+        {
+            type: "list",
+            name: "add",
+            message: "Would you like to add another Employee?",
+            choices: ["Yes","No"]
+        }
+    );
+}
+async function employeeRole() {
+    return inquirer.prompt(
+        {
+            type: "list",
+            name: "role",
+            message: "What is the employee role?",
+            choices: ["Employee", "Manager", "Engineer", "Intern"]
+        }
+    );
+}
+async function inputID() {
+    return inquirer.prompt(
+        {
+            type: "number",
+            name: "id",
+            message: "What is the employee ID?",
+        }
+    );
+}
+async function inputOfficeNumber() {
+    return inquirer.prompt(
+        {
+            type: "number",
+            name: "officeNumber",
+            message: "What is the manager's office number?",
+        }
+    );
+}
+async function inputGithub() {
+    return inquirer.prompt(
+        {
+            type: "input",
+            name: "github",
+            message: "What is the engineer's GitHub username?",
+        }
+    );
+}
+async function inputSchool() {
+    return inquirer.prompt(
+        {
+            type: "input",
+            name: "school",
+            message: "What is the intern's school?",
+        }
+    );
+}
 
 // function generateHTML(answers, gitInfo, stars) {
 //     return `
