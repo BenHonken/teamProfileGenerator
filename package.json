@@ -10,7 +10,8 @@
   "dependencies": {
     "fs": "^0.0.1-security",
     "inquirer": "^7.0.0",
-    "jest": "^24.9.0"
+    "jest": "^24.9.0",
+    "mustache": "^3.1.0"
   },
   "devDependencies": {},
   "scripts": {

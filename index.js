@@ -2,6 +2,7 @@ const jest = require("jest");
 const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
+const mustache = require("mustache");
 const Employee = require("./lib/Employee")
 const Manager = require("./lib/Manager")
 const Engineer = require("./lib/Engineer")
