@@ -1,0 +1,29 @@
+{
+  "name": "teamprofilegenerator",
+  "version": "1.0.0",
+  "description": "Generate an HTML profile for your team",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "inquirer": "^7.0.0",
+    "jest": "^24.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenHonken/teamProfileGenerator.git"
+  },
+  "author": "Ben Honken",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BenHonken/teamProfileGenerator/issues"
+  },
+  "homepage": "https://github.com/BenHonken/teamProfileGenerator#readme"
+}
