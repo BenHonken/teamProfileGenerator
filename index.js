@@ -9,12 +9,13 @@ const Engineer = require("./lib/Engineer")
 const Intern = require("./lib/Intern")
 const writeFileAsync = util.promisify(fs.writeFile);
 const employeeArray = [];
+const idArray = [];
 async function addEmployee() {
     return inquirer.prompt(
         {
             type: "list",
             name: "add",
-            message: "Would you like to add an Employee?",
+            message: "Would you like to add an employee?",
             choices: ["Yes","No"]
         }
     );
@@ -24,7 +25,7 @@ async function addAnother() {
         {
             type: "list",
             name: "add",
-            message: "Would you like to add another Employee?",
+            message: "Would you like to add another employee?",
             choices: ["Yes","No"]
         }
     );
@@ -39,12 +40,30 @@ async function employeeRole() {
         }
     );
 }
+async function inputName() {
+    return inquirer.prompt(
+        {
+            type: "input",
+            name: "name",
+            message: "What is the employee's name?",
+        }
+    );
+}
 async function inputID() {
     return inquirer.prompt(
         {
             type: "number",
             name: "id",
             message: "What is the employee ID?",
+        }
+    );
+}
+async function inputEmail() {
+    return inquirer.prompt(
+        {
+            type: "input",
+            name: "email",
+            message: "What is the employee's email address?",
         }
     );
 }
@@ -92,23 +111,60 @@ async function inputSchool() {
 //   </html>`;
 //   }
 
-// async function init() {
-//     console.log("hi");
-//     try {
-//       const answers = await promptUser();
+async function init() {
+    console.log("hi");
+    try {
+      let add = await addEmployee();
+      while(add.add == "Yes"){
+        let name = await inputName();
+        let id = await inputID();
+        while(idArray.includes(id.id) || Number.isNaN(id.id)){
+            if (idArray.includes(id.id)){
+                console.log("This ID is in use.  Please input a unique ID.")
+                id = await inputID();
+            }
+            if (Number.isNaN(id.id)){
+                console.log("ID must be a number.")
+                id = await inputID();
+            }
+        }
+        idArray.push(id.id);
+        let email = await inputEmail();
+        //validate emails here later if you feel like it and have time
+        let role = await employeeRole();
+        if (role.role=="Employee"){
+            let employee = new Employee(name.name, id.id, email.email);
+            employeeArray.push(employee);
+        }
+        else if (role.role=="Manager"){
+            let officeNumber = await inputOfficeNumber();
+            while (officeNumber.officeNumber == NaN){
+                console.log("Office Number must be a number.")
+                officeNumber = await inputOfficeNumber();
+            }
+            let employee = new Manager(name.name, id.id, email.email, officeNumber.officeNumber);
+            employeeArray.push(employee);
+        }
+        else if (role.role=="Engineer"){
+            let github = await inputGithub();
+            //Validate that it's a real username and the link works?
+            let employee = new Engineer(name.name, id.id, email.email, github.github);
+            employeeArray.push(employee);
+        }
+        else if (role.role=="Intern"){
+            let school = await inputSchool();
+            let employee = new Intern(name.name, id.id, email.email, school.school);
+            employeeArray.push(employee);
+        }
+        add = await addAnother();
+      }
+    //   const html = generateHTML(answers, gitInfo, stars);
   
-//       const gitInfo = await gitAPICall(answers);
-//       const gitStars = await gitStarsAPICall(answers);
-//       const stars = gitStars.data.length;
+    //   await writeFileAsync("index.html", html);
   
-//       const html = generateHTML(answers, gitInfo, stars);
-  
-//       await writeFileAsync("index.html", html);
-  
-//       console.log("Successfully wrote to index.html");
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   }
-  
-//   init();
+    //   console.log("Successfully wrote to index.html");
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  init();
