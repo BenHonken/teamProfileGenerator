@@ -172,9 +172,9 @@ async function init() {
         <title>Team Profile</title>
       </head>
       <body style="background-color: white">
-        <header style="background-color: red">
+        <h1 style="background-color: red">
             My Team
-        </header>
+        </h1>
         <div class="wrapper" style="max-width: 960px; margin: 50px auto">
         `
       for(let i = 0; i<employeeArray.length; i++){
