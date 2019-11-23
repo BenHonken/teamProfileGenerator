@@ -10,6 +10,7 @@ const Intern = require("./lib/Intern")
 const writeFileAsync = util.promisify(fs.writeFile);
 const employeeArray = [];
 const idArray = [];
+let template = "";
 async function addEmployee() {
     return inquirer.prompt(
         {
@@ -182,16 +183,16 @@ async function init() {
             `
           }
           if(employeeArray[i].getRole() == "Employee"){
-            let template = fs.readFileSync('templates/main.html', 'utf8');
+            template = fs.readFileSync('templates/main.html', 'utf8');
           }
           else if(employeeArray[i].getRole() == "Manager"){
-            let template = fs.readFileSync('templates/manager.html', 'utf8');
+            template = fs.readFileSync('templates/manager.html', 'utf8');
           }
           else if(employeeArray[i].getRole() == "Engineer"){
-            let template = fs.readFileSync('templates/engineer.html', 'utf8');
+            template = fs.readFileSync('templates/engineer.html', 'utf8');
           }
           else if(employeeArray[i].getRole() == "Intern"){
-            let template = fs.readFileSync('templates/intern.html', 'utf8');
+            template = fs.readFileSync('templates/intern.html', 'utf8');
           }
           let filled = mustache.render(template, employeeArray[i])
           html += filled;
