@@ -159,16 +159,13 @@ async function init() {
         }
         add = await addAnother();
       }
-      //generate opening html
-      //for loop that goes through employee array, chooses the appropriate template, fills it in with mustache, and appends it.
-      //generate and append closing html
-      //write html and save to output folder
       let html = `<!DOCTYPE html>
       <html lang="en">
       <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
         <title>Team Profile</title>
       </head>
       <body style="background-color: white">
