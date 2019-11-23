@@ -171,7 +171,7 @@ async function init() {
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <title>Team Profile</title>
       </head>
-      <body style="background-color: white">"
+      <body style="background-color: white">
         <header style="background-color: red">
             My Team
         </header>
