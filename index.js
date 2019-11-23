@@ -204,6 +204,7 @@ async function init() {
       </body>
       </html>`
       await writeFileAsync("output/index.html", html);
+      console.log("Successfully wrote to index.html in the output folder");
     } catch (err) {
       console.log(err);
     }
