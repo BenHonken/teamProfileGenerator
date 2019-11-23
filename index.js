@@ -158,11 +158,52 @@ async function init() {
         }
         add = await addAnother();
       }
-    //   const html = generateHTML(answers, gitInfo, stars);
-  
-    //   await writeFileAsync("index.html", html);
-  
-    //   console.log("Successfully wrote to index.html");
+      //generate opening html
+      //for loop that goes through employee array, chooses the appropriate template, fills it in with mustache, and appends it.
+      //generate and append closing html
+      //write html and save to output folder
+      let html = `<!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <title>Team Profile</title>
+      </head>
+      <body style="background-color: white">"
+        <header style="background-color: red">
+            My Team
+        </header>
+        <div class="wrapper" style="max-width: 960px; margin: 50px auto">
+        `
+      for(let i = 0; i<employeeArray.length; i++){
+          if(i % 3 == 0){
+            html += `<row>
+            `
+          }
+          if(employeeArray[i].getRole() == "Employee"){
+            let template = fs.readFileSync('templates/main.html', 'utf8');
+          }
+          else if(employeeArray[i].getRole() == "Manager"){
+            let template = fs.readFileSync('templates/manager.html', 'utf8');
+          }
+          else if(employeeArray[i].getRole() == "Engineer"){
+            let template = fs.readFileSync('templates/engineer.html', 'utf8');
+          }
+          else if(employeeArray[i].getRole() == "Intern"){
+            let template = fs.readFileSync('templates/intern.html', 'utf8');
+          }
+          let filled = Mustache.render(template, employeeArray[i])
+          html += filled;
+          if((i % 3 == 2) || (i == (employeeArray.length-1))){
+            html += `</row>
+            `
+          }
+      }
+      html += `  </div>
+      </body>
+      </html>`
+      await writeFileAsync("output/index.html", html);
     } catch (err) {
       console.log(err);
     }
