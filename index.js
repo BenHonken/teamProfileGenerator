@@ -193,7 +193,7 @@ async function init() {
           else if(employeeArray[i].getRole() == "Intern"){
             let template = fs.readFileSync('templates/intern.html', 'utf8');
           }
-          let filled = Mustache.render(template, employeeArray[i])
+          let filled = mustache.render(template, employeeArray[i])
           html += filled;
           if((i % 3 == 2) || (i == (employeeArray.length-1))){
             html += `</row>
