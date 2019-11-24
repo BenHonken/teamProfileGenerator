@@ -10,9 +10,9 @@ This is a team profile generator by Ben Honken.  It uses inquirer to gather info
 
 HTML was generated using a base and templates for the cards which were filled with mustasche.  
 
-[HTMLBase](htmlBase.png)
-[Mustasche](mustasche.png)
-[HTMLTemplate](htmlTemplate.png)
+[HTMLBase](screenshots/htmlBase.png)
+[Mustasche]screenshots/(mustasche.png)
+[HTMLTemplate](screenshots/htmlTemplate.png)
 
 
 ## Usage
